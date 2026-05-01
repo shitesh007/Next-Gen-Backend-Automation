@@ -12,6 +12,7 @@ export default function PromptEngine() {
   const [prompt, setPrompt] = useState('');
   const [schema, setSchema] = useState(null);
   const [generatedFiles, setGeneratedFiles] = useState(null);
+  const [fileContents, setFileContents] = useState(null);
   const [projectName, setProjectName] = useState('');
   const [loading, setLoading] = useState(false);
   const [downloading, setDownloading] = useState(false);
@@ -38,6 +39,7 @@ export default function PromptEngine() {
     try {
       const data = await buildProject(schema);
       setGeneratedFiles(data.files);
+      setFileContents(data.fileContents || null);
       setProjectName(data.projectName || schema.projectName);
       setStep('done');
     } catch (err) { setError(err.message); }
@@ -46,13 +48,13 @@ export default function PromptEngine() {
 
   const handleDownload = async () => {
     setDownloading(true);
-    try { await downloadProjectZip(projectName); showToast('✅ ZIP downloaded!'); }
+    try { await downloadProjectZip(projectName, fileContents); showToast('✅ ZIP downloaded!'); }
     catch (err) { setError(err.message); }
     finally { setDownloading(false); }
   };
 
   const handleReset = () => {
-    setPrompt(''); setSchema(null); setGeneratedFiles(null);
+    setPrompt(''); setSchema(null); setGeneratedFiles(null); setFileContents(null);
     setProjectName(''); setStep('prompt'); setError('');
   };
   /* ===== END HANDLERS ===== */
