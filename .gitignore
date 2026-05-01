@@ -48,3 +48,5 @@ backend/generated_*/
 # Lock files (optional)
 # ========================
 package-lock.json
+
+.vercel

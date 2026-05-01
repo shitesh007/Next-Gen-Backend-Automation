@@ -4,18 +4,20 @@
   "outputDirectory": "backend-Automation-system/dist",
   "installCommand": "cd backend && npm install && cd ../backend-Automation-system && npm install",
   "framework": null,
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "@vercel/node@3.0.0"
-    }
-  },
   "rewrites": [
     { "source": "/api/generate-schema", "destination": "/api/generate-schema" },
     { "source": "/api/build", "destination": "/api/build" },
     { "source": "/api/download/:projectName", "destination": "/api/download" },
     { "source": "/(.*)", "destination": "/" }
   ],
-  "env": {
-    "GEMINI_API_KEY": "@gemini-api-key"
-  }
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+      ]
+    }
+  ]
 }
