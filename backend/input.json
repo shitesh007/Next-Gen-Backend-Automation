@@ -1,11 +1,66 @@
 {
-  "projectName": "taskmanager",
+  "projectName": "ne-commerce",
   "models": [
     {
-      "name": "User",
+      "name": "Product",
       "fields": [
         {
-          "name": "username",
+          "name": "name",
+          "type": "String",
+          "required": true
+        },
+        {
+          "name": "price",
+          "type": "Number",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "required": false
+        },
+        {
+          "name": "category",
+          "type": "String",
+          "required": true
+        },
+        {
+          "name": "inStock",
+          "type": "Boolean",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "Order",
+      "fields": [
+        {
+          "name": "orderNumber",
+          "type": "String",
+          "required": true
+        },
+        {
+          "name": "totalAmount",
+          "type": "Number",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "required": true
+        },
+        {
+          "name": "customer",
+          "type": "String",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "Customer",
+      "fields": [
+        {
+          "name": "name",
           "type": "String",
           "required": true
         },
@@ -15,68 +70,13 @@
           "required": true
         },
         {
-          "name": "password",
-          "type": "String",
-          "required": true
-        },
-        {
-          "name": "role",
-          "type": "String",
-          "required": false
-        }
-      ]
-    },
-    {
-      "name": "Task",
-      "fields": [
-        {
-          "name": "title",
-          "type": "String",
-          "required": true
-        },
-        {
-          "name": "description",
+          "name": "phone",
           "type": "String",
           "required": false
         },
         {
-          "name": "status",
+          "name": "address",
           "type": "String",
-          "required": true
-        },
-        {
-          "name": "priority",
-          "type": "String",
-          "required": true
-        },
-        {
-          "name": "dueDate",
-          "type": "Date",
-          "required": false
-        }
-      ]
-    },
-    {
-      "name": "Project",
-      "fields": [
-        {
-          "name": "name",
-          "type": "String",
-          "required": true
-        },
-        {
-          "name": "description",
-          "type": "String",
-          "required": false
-        },
-        {
-          "name": "status",
-          "type": "String",
-          "required": true
-        },
-        {
-          "name": "deadline",
-          "type": "Date",
           "required": false
         }
       ]

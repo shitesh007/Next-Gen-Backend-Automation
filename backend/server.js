@@ -24,15 +24,18 @@ Strict Rules:
 1. Output ONLY valid JSON. No conversational text, no markdown code blocks, and no explanations.
 2. You must follow the exact schema structure provided below.
 3. If a requirement is unclear, make a best-guess technical decision rather than asking questions.
+4. ALWAYS include a "User" model with fields: username (String), email (String), password (String), role (String). This is mandatory for authentication.
+5. For non-User models (e.g., Task, Post, Product), do NOT add a "user" or "author" or "owner" ownership field. The code generator will automatically inject a user ownership reference (ObjectId ref to User) into every non-User model.
+6. Each non-User model should contain ONLY its own domain-specific fields.
 
 Required JSON Format:
 {
   "projectName": "string",
   "models": [
     {
-      "name": "string (Capitalized)",
+      "name": "string (PascalCase, e.g., User, Task, Post)",
       "fields": [
-        { "name": "string", "type": "String|Number|Boolean|Date", "required": true }
+        { "name": "string", "type": "String|Number|Boolean|Date", "required": true|false }
       ]
     }
   ]
