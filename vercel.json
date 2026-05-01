@@ -1,23 +1,10 @@
 {
   "version": 2,
-  "buildCommand": "cd backend-Automation-system && npm install && npm run build",
-  "outputDirectory": "backend-Automation-system/dist",
-  "installCommand": "cd backend && npm install && cd ../backend-Automation-system && npm install",
-  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "automind-app/.next",
+  "installCommand": "cd automind-app && npm install",
+  "framework": "nextjs",
   "rewrites": [
-    { "source": "/api/generate-schema", "destination": "/api/generate-schema" },
-    { "source": "/api/build", "destination": "/api/build" },
-    { "source": "/api/download/:projectName", "destination": "/api/download" },
-    { "source": "/(.*)", "destination": "/" }
-  ],
-  "headers": [
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, OPTIONS" },
-        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
-      ]
-    }
+    { "source": "/(.*)", "destination": "/automind-app/$1" }
   ]
 }

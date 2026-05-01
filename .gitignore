@@ -37,6 +37,8 @@ desktop.ini
 # ========================
 dist/
 build/
+.next/
+automind-app/.next/
 
 # ========================
 # Generated Test Outputs
