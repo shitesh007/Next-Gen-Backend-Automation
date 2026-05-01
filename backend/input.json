@@ -1,0 +1,85 @@
+{
+  "projectName": "taskmanager",
+  "models": [
+    {
+      "name": "User",
+      "fields": [
+        {
+          "name": "username",
+          "type": "String",
+          "required": true
+        },
+        {
+          "name": "email",
+          "type": "String",
+          "required": true
+        },
+        {
+          "name": "password",
+          "type": "String",
+          "required": true
+        },
+        {
+          "name": "role",
+          "type": "String",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "Task",
+      "fields": [
+        {
+          "name": "title",
+          "type": "String",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "required": false
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "required": true
+        },
+        {
+          "name": "priority",
+          "type": "String",
+          "required": true
+        },
+        {
+          "name": "dueDate",
+          "type": "Date",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "Project",
+      "fields": [
+        {
+          "name": "name",
+          "type": "String",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "String",
+          "required": false
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "required": true
+        },
+        {
+          "name": "deadline",
+          "type": "Date",
+          "required": false
+        }
+      ]
+    }
+  ]
+}
