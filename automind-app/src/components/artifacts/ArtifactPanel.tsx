@@ -2,20 +2,27 @@
 
 import { useState } from "react";
 import { CodeViewer } from "./CodeViewer";
+import { useGeneration } from "@/lib/context/GenerationContext";
 
 export function ArtifactPanel({ onClose }: { onClose: () => void }) {
   const [activeTab, setActiveTab] = useState<'code' | 'swagger' | 'playground'>('code');
+  const { projectName, files, isLoading } = useGeneration();
 
   return (
     <div className="h-full flex flex-col bg-card border-l border-border shadow-2xl">
       {/* Header */}
       <div className="flex items-center justify-between p-3 border-b border-border bg-background/50">
         <div className="flex items-center gap-2">
-          <span className="text-xl">📦</span>
-          <span className="font-semibold text-sm">E-commerce API</span>
+          <span className="text-xl">{isLoading ? "⌛" : "📦"}</span>
+          <span className="font-semibold text-sm">
+            {isLoading ? "Generating..." : projectName}
+          </span>
         </div>
         <div className="flex gap-2">
-          <button className="px-3 py-1.5 text-xs font-semibold bg-primary/10 text-primary hover:bg-primary/20 rounded-md transition-colors">
+          <button 
+            disabled={files.length === 0 || isLoading}
+            className="px-3 py-1.5 text-xs font-semibold bg-primary/10 text-primary hover:bg-primary/20 rounded-md transition-colors disabled:opacity-50"
+          >
             ⬇️ Download ZIP
           </button>
           <button onClick={onClose} className="p-1.5 hover:bg-secondary rounded-md text-muted-foreground transition-colors">
@@ -63,3 +70,4 @@ export function ArtifactPanel({ onClose }: { onClose: () => void }) {
     </div>
   );
 }
+
